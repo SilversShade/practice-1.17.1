@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "practice:titanium_block"
+    }
+  ],
+  "result": {
+     "item": "practice:titanium_ingot",
+     "count": 9
+  }
+}
