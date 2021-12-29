@@ -1,5 +1,6 @@
 package com.silvershade.practice;
 
+import com.silvershade.practice.block.ModBlocks;
 import com.silvershade.practice.item.ModItems;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
@@ -25,6 +26,7 @@ public class Practice
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ModItems.register(eventBus);
+        ModBlocks.register(eventBus);
 
         eventBus.addListener(this::setup);
 

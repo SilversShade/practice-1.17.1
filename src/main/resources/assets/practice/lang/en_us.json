@@ -1,5 +1,7 @@
 {
   "item.practice.titanium_ingot": "Titanium Ingot",
   "item.practice.titanium_nugget": "Titanium Nugget",
-  "item.practice.raw_titanium": "Raw Titanium"
+  "item.practice.raw_titanium": "Raw Titanium",
+  "block.practice.titanium_block": "Titanium Block",
+  "block.practice.titanium_ore": "Titanium Ore"
 }
