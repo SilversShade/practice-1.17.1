@@ -1,6 +1,7 @@
 package com.silvershade.practice.block;
 
 import com.silvershade.practice.Practice;
+import com.silvershade.practice.item.ModCreativeModeTab;
 import com.silvershade.practice.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
@@ -20,10 +21,22 @@ public class ModBlocks {
             DeferredRegister.create(ForgeRegistries.BLOCKS, Practice.MOD_ID);
 
     public static final RegistryObject<Block> TITANIUM_BLOCK = registerBlock("titanium_block",
-            () -> new Block(BlockBehaviour.Properties.of(Material.METAL).strength(12f)));
+            () -> new Block(BlockBehaviour.Properties.of(Material.METAL).strength(12f)), ModCreativeModeTab.PRACTICE_TAB);
 
     public static final RegistryObject<Block> TITANIUM_ORE = registerBlock("titanium_ore",
-            () -> new Block(BlockBehaviour.Properties.of(Material.METAL).strength(10f)));
+            () -> new Block(BlockBehaviour.Properties.of(Material.METAL).strength(10f)), ModCreativeModeTab.PRACTICE_TAB);
+
+    private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block,
+                                                                     CreativeModeTab tab) {
+        RegistryObject<T> toReturn = BLOCKS.register(name, block);
+        registerBlockItem(name, toReturn, tab);
+        return toReturn;
+    }
+
+    private static <T extends Block> void registerBlockItem(String name, RegistryObject<T> block, CreativeModeTab tab) {
+        ModItems.ITEMS.register(name, () -> new BlockItem(block.get(),
+                new Item.Properties().tab(tab)));
+    }
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
@@ -33,9 +46,8 @@ public class ModBlocks {
 
     private static <T extends Block> void registerBlockItem(String name, RegistryObject<T> block) {
         ModItems.ITEMS.register(name, () -> new BlockItem(block.get(),
-                new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+                new Item.Properties().tab(ModCreativeModeTab.PRACTICE_TAB)));
     }
-
 
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);
