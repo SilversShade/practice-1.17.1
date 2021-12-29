@@ -20,7 +20,6 @@ public class Practice
     // Directly reference a log4j logger.
     private static final Logger LOGGER = LogManager.getLogger();
 
-
     public Practice() {
         // Register the setup method for modloading
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
