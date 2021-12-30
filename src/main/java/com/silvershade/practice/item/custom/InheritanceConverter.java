@@ -21,6 +21,7 @@ public class InheritanceConverter extends Item {
             new ImmutableMap.Builder<Block, Item>()
                     .put(Blocks.SAND, Blocks.GLASS.asItem())
                     .put(Blocks.CLAY, Items.CLAY_BALL)
+                    .put(Blocks.COBBLESTONE, Blocks.STONE.asItem())
                     .build();
 
     public InheritanceConverter(Properties p_41383_) {
@@ -34,7 +35,7 @@ public class InheritanceConverter extends Item {
             BlockPos positionClicked = pContext.getClickedPos();
             Block blockClicked = level.getBlockState(positionClicked).getBlock();
 
-            if (canBlowTorch(blockClicked)) {
+            if (canConvert(blockClicked)) {
                 int dropAmount=1;
                 if (blockClicked==Blocks.CLAY)
                     dropAmount=4;
@@ -55,7 +56,7 @@ public class InheritanceConverter extends Item {
         return InteractionResult.SUCCESS;
     }
 
-    private boolean canBlowTorch(Block block) {
+    private boolean canConvert(Block block) {
         return INHERITANCE_CONVERTER_ITEM_CONVERSION.containsKey(block);
     }
 }
